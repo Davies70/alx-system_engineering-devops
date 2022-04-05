@@ -1,2 +1,2 @@
 #!/bin/bash
-printenv $PATH | grep^d | wc -l
+echo $PATH: | tr -dc : | wc -c
