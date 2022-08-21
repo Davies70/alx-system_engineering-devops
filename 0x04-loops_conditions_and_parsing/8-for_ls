@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#using for loop and {parameter expansion}
+LIST="$(ls ./)"
+
+for file in $LIST
+do
+	echo "${file#*-}"
+done
