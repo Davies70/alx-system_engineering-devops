@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #pgrep used to find the PID
 
-pgrep bash -l
+pgrep '^bash$' -l | awk 'NR!=2'
