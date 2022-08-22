@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # listing all processes in a user-oriented format
 
-ps -aux
+ps -aufx
