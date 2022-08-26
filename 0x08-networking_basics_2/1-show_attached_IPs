@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Displays all acive IPv4 addresses.
 
-ifconfig | grep 'inet ' | awk {'print $2'}
+ifconfig | grep 'inet ' | awk '{print $2}'
