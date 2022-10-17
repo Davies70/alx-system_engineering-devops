@@ -1,6 +1,7 @@
 Understanding and Developing a Secure Shell
 ===========================================
 > Tasks
->> Use a private key
->> Client configuration file
->> Let me in!
+>>>
+1. Use a private key
+2. Client configuration file
+3. Let me in!
