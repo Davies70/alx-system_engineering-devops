@@ -1,30 +1,33 @@
 #!/usr/bin/python3
-'''Write a Python script that, using this REST API, \
-        for a given employee ID, \
-        returns information about his/her TODO list progress.'''
+"""
+Using https://jsonplaceholder.typicode.com
+returns info about employee TODO progress
+Implemented using recursion
+"""
+import re
 import requests
 import sys
 
 
+API = "https://jsonplaceholder.typicode.com"
+"""REST API url"""
+
+
 if __name__ == '__main__':
-    u = 'https://jsonplaceholder.typicode.com/users/{}'
-    t = 'https://jsonplaceholder.typicode.com/users/{}/todos'
-    api_user = u.format(sys.argv[1])
-    api_todo = t.format(sys.argv[1])
-    r_user = requests.get(api_user)
-    r_todo = requests.get(api_todo)
-
-    user = r_user.json()
-    todo = r_todo.json()
-
-    num_of_tasks = len(todo)
-    completed = 0
-    for task in todo:
-        if task.get('completed') is True:
-            completed += 1
-
-    print('Employee {} is done with tasks({}/{}):'.format(
-          user.get('name'), completed, num_of_tasks))
-    for task in todo:
-        if task.get('completed') is True:
-            print('\t {}'.format(task.get('title')))
+    if len(sys.argv) > 1:
+        if re.fullmatch(r'\d+', sys.argv[1]):
+            id = int(sys.argv[1])
+            user_res = requests.get('{}/users/{}'.format(API, id)).json()
+            todos_res = requests.get('{}/todos'.format(API)).json()
+            user_name = user_res.get('name')
+            todos = list(filter(lambda x: x.get('userId') == id, todos_res))
+            todos_done = list(filter(lambda x: x.get('completed'), todos))
+            print(
+                'Employee {} is done with tasks({}/{}):'.format(
+                    user_name,
+                    len(todos_done),
+                    len(todos)
+                )
+            )
+            for todo_done in todos_done:
+                print('\t {}'.format(todo_done.get('title')))
