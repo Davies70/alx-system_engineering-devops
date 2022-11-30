@@ -10,7 +10,7 @@ def json_find(d, key):
     """ prints to 10 hot subreddits """
     if isinstance(d, dict):
         if key in d.keys():
-            print(d.get(key))
+            print(d.get(key, None))
         [json_find(d[k], key) for k in d.keys()]
 
     elif isinstance(d, list):
@@ -28,5 +28,8 @@ def top_ten(subreddit):
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {'User-Agent': '0x16-api_advanced: project: v1.0.0 \
                (by /u/lordzeus9000)'}
-    hot_lists = requests.get(url, headers=headers).json()
-    json_find(hot_lists, 'title')
+    try:
+        hot_lists = requests.get(url, headers=headers).json()
+        json_find(hot_lists, 'title')
+    except Exception as e:
+        print(None)
