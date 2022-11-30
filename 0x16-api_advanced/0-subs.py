@@ -1,12 +1,18 @@
 #!/usr/bin/python3
 
-""" returns the subreddit subscriber count via API call """
+"""
+returns the subreddit subscriber count via API call
+Contains the number_of_subscribers function
+"""
 
 import requests
 
 
 def number_of_subscribers(subreddit):
-    '''get subscribers of SubReddit using API call '''
+    """
+    get subscribers of SubReddit using API call
+
+    """
     client_id = 'g_3cI1hmYOJ-3wKE-UH-jw'
     secret_token = 'Sx2Uw-jmlVMz5rQ9Cu-hs1vXZfl81w'
 
