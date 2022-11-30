@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-''' returns the subreddit subscriber count via API call'''
+
+""" returns the subreddit subscriber count via API call """
+
 import requests
 
 
