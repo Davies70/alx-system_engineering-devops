@@ -20,7 +20,7 @@ def top_ten(subreddit):
     """ return top ten hot posts"""
 
     if subreddit is None or type(subreddit) is not str:
-        print None
+        print(None)
 
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     hot_lists = requests.get(url,
