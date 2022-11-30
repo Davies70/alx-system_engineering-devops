@@ -23,13 +23,14 @@ def json_find(d, key):
 def top_ten(subreddit):
     """ return top ten hot posts"""
     if subreddit is None or type(subreddit) is not str:
-        print(None)
+        print("None")
 
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {'User-Agent': '0x16-api_advanced: project: v1.0.0 \
                (by /u/lordzeus9000)'}
     try:
-        hot_lists = requests.get(url, headers=headers).json()
-        json_find(hot_lists, 'title')
-    except Exception as e:
-        print("None")
+        hot_lists = requests.get(url, headers=headers)
+        hot_lists.raise_for_status()
+    except requests.exceptions.RequestException:
+        print('None')
+    json_find(hot_lists.json(), 'title')
