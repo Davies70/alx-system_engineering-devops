@@ -6,7 +6,7 @@ sudo add-apt-repository -y ppa:vbernat/haproxy-2.4
 sudo apt-get -y install haproxy
 
 # the load balancer's configuration
-DOMAIN_NAME='gina-beki.tech'
+DOMAIN_NAME='daviesajayi.tech'
 INIT_FILE='/etc/default/haproxy'
 CONFIG_FILE='/etc/haproxy/haproxy.cfg'
 HAPROXY_LB_CONFIG=\
@@ -14,8 +14,8 @@ HAPROXY_LB_CONFIG=\
 #--$DOMAIN_NAME-params-begin--
 backend $DOMAIN_NAME-backend
         balance roundrobin
-        server 33037-web-01 100.25.47.182:80 check
-        server 33037-web-02 100.25.153.250:80 check
+        server 33037-web-01 18.207.207.63:80 check
+        server 33037-web-02 54.224.42.135:80 check
 frontend $DOMAIN_NAME-frontend
         bind *:80
         mode http
