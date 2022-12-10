@@ -1,0 +1,16 @@
+server {
+        listen 80;
+        server_name _;
+        add_header X-Served-By $hostname;
+        location / {
+                try_files $uri $uri/ =404;
+        }
+
+        location /airbnb-onepage/ {
+                proxy_pass http://localhost:5000;
+        }
+
+        location /airbnb-dynamic/number_odd_or_even/ {
+                proxy_pass http://localhost:5001/number_odd_or_even/;
+        }
+}
